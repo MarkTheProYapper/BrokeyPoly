@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brokey-Poly</title>
+    <title>Card Shuffle - Brokey-Poly</title>
     <style>
         body {
             font-family: sans-serif;
@@ -56,6 +56,33 @@
         main {
             padding: 50px;
         }
+        .card-container {
+            margin: 30px auto;
+            width: 300px;
+            height: 150px;
+            background-color: white;
+            border: 2px solid #333;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #333;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #ffd700;
+        }
         footer {
             background-color: #333;
             color: white;
@@ -69,16 +96,16 @@
 </head>
 <body>
     <header>
-        <h1 id="site-title">Brokey-Poly</h1>
+        <h1>Brokey-Poly</h1>
         <nav>
             <ul>
-                <li><a href="Hompage.html" class="active" id="nav-home">Home</a></li>
-                <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
-                <li><a href="card-shuffle.html" id="nav-card">Card Shuffle</a></li>
+                <li><a href="Homepage.html">Home</a></li>
+                <li><a href="dice-roller.html">Dice Roller</a></li>
+                <li><a href="card-shuffle.html" class="active">Card Shuffle</a></li>
             </ul>
         </nav>
         <div class="language-selector">
-            <label for="language" id="language-label">Language:</label>
+            <label for="language">Language:</label>
             <select id="language" onchange="translatePage()">
                 <option value="en">English</option>
                 <option value="th">ภาษาไทย</option>
@@ -86,54 +113,50 @@
         </div>
     </header>
     <main>
-        <h2 id="main-title">Welcome to Brokey-Poly!</h2>
-        <p id="main-description">Explore the Dice Roller and Card Shuffle to enhance your gameplay experience.</p>
-        
-        <h2 id="purpose-title">The purpose of the website</h2>
-        <p id="purpose-description">We build this website to reduce resources by making a dice roller and a card shuffler.</p>
+        <h2>Dig Through Trash!</h2>
+        <div class="card-container" id="card">Click "Shuffle" to see what you found!</div>
+        <button onclick="shuffleCard()">Shuffle</button>
     </main>
     <footer>
-        <p id="footer-text">&copy; 2024 Brokey-Poly. All rights reserved.</p>
+        &copy; 2024 Brokey-Poly. All rights reserved.
     </footer>
 
     <script>
-        const translations = {
-            en: {
-                "site-title": "Brokey-Poly",
-                "nav-home": "Home",
-                "nav-dice": "Dice Roller",
-                "nav-card": "Card Shuffle",
-                "language-label": "Language:",
-                "main-title": "Welcome to Brokey-Poly!",
-                "main-description": "Explore the Dice Roller and Card Shuffle to enhance your gameplay experience.",
-                "purpose-title": "The purpose of the website",
-                "purpose-description": "We build this website to reduce resources by making a dice roller and a card shuffler.",
-                "footer-text": "&copy; 2024 Brokey-Poly. All rights reserved."
-            },
-            th: {
-                "site-title": "เกมยาจก",
-                "nav-home": "หน้าหลัก",
-                "nav-dice": "ลูกเต๋า",
-                "nav-card": "การ์ดสุ่ม",
-                "language-label": "ภาษา:",
-                "main-title": "ยินดีต้อนรับสู่เกมยาจก!",
-                "main-description": "สำรวจลูกเต๋าและการ์ดสุ่มเพื่อเพิ่มความสนุกในเกมของคุณ",
-                "purpose-title": "วัตถุประสงค์ของเว็บไซต์",
-                "purpose-description": "เราสร้างเว็บไซต์นี้เพื่อลดทรัพยากรด้วยการทำลูกเต๋าและการ์ดสุ่ม",
-                "footer-text": "&copy; 2024 เกมยาจก สงวนลิขสิทธิ์."
-            }
+        const messages = {
+            en: [
+                "You found an old can and sold it for 5 coins.",
+                "You discovered a broken chair and sold it for 15 coins.",
+                "You stumbled upon a rare coin worth 50 coins!",
+                "You got your hands dirty for nothing. No luck this time!",
+                "You found a plastic bottle and sold it for 10 coins.",
+                "You found some old newspapers and earned 20 coins.",
+                "You found a broken clock worth 30 coins!"
+            ],
+            th: [
+                "คุณพบกระป๋องเก่าและขายได้ 5 เหรียญ",
+                "คุณพบเก้าอี้หักและขายได้ 15 เหรียญ",
+                "คุณเจอเหรียญหายากมูลค่า 50 เหรียญ!",
+                "คุณค้นเจอแต่ไม่ได้อะไรเลย โชคไม่ดีครั้งนี้!",
+                "คุณพบขวดพลาสติกและขายได้ 10 เหรียญ",
+                "คุณเจอหนังสือพิมพ์เก่าและได้เงิน 20 เหรียญ",
+                "คุณพบวิทยุพังและขายได้ 30 เหรียญ!"
+            ]
         };
 
-        function translatePage() {
-            const currentLanguage = document.getElementById("language").value;
-            const elementsToTranslate = document.querySelectorAll("[id]");
+        let currentLanguage = "en";
 
-            elementsToTranslate.forEach(element => {
-                const key = element.id;
-                if (translations[currentLanguage][key]) {
-                    element.innerHTML = translations[currentLanguage][key];
-                }
-            });
+        function shuffleCard() {
+            const randomMessage = messages[currentLanguage][Math.floor(Math.random() * messages[currentLanguage].length)];
+            document.getElementById("card").textContent = randomMessage;
+        }
+
+        function translatePage() {
+            const languageSelector = document.getElementById("language");
+            currentLanguage = languageSelector.value;
+
+            // Update static page content based on language
+            document.querySelector("h2").textContent = currentLanguage === "en" ? "Dig Through Trash!" : "ค้นขยะ!";
+            document.querySelector("button").textContent = currentLanguage === "en" ? "Shuffle" : "สับเปลี่ยน";
         }
     </script>
 </body>
