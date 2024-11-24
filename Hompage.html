@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Brokey-Poly</title>
+    <title>Brokey-Poly</title>
     <style>
         body {
             font-family: sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f7f7f7;
+            text-align: center;
         }
         header {
             background-color: #333;
@@ -48,13 +49,12 @@
             color: black;
             box-shadow: 0 0 10px #ffd700;
         }
-        main {
-            text-align: center;
-            padding: 50px;
+        .language-selector {
+            color: white;
+            margin-left: 20px;
         }
-        main h2 {
-            font-size: 28px;
-            color: #333;
+        main {
+            padding: 50px;
         }
         footer {
             background-color: #333;
@@ -69,26 +69,72 @@
 </head>
 <body>
     <header>
-        <h1>Brokey-Poly</h1>
+        <h1 id="site-title">Brokey-Poly</h1>
         <nav>
             <ul>
-                <li><a href="Hompage.html" class="active">Home</a></li>
-                <li><a href="dice-roller.html">Dice Roller</a></li>
-                <li><a href="card-shuffle.html">Card Shuffle</a></li>
+                <li><a href="Hompage.html" class="active" id="nav-home">Home</a></li>
+                <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
+                <li><a href="card-shuffle.html" id="nav-card">Card Shuffle</a></li>
             </ul>
         </nav>
+        <div class="language-selector">
+            <label for="language" id="language-label">Language:</label>
+            <select id="language" onchange="translatePage()">
+                <option value="en">English</option>
+                <option value="th">ภาษาไทย</option>
+            </select>
+        </div>
     </header>
     <main>
-        <h2>Welcome to Brokey-Poly!</h2>
-        <p>Hello Welcome To The Brokey-Poly,Its A School Project and We decided to make a board game.We got the idea form the <a href=" https://en.wikipedia.org/wiki/Monopoly_(game)Monopoly">Monopoly</a> but what if we start from a broke person instead of rich </p>
-        <br>
-        <br>
-        <br>
-        <h2>The purpose of the website</h2>
-        <p>We Build this website to reduce resourse by making a dice roller and a card shuffler.</p>
+        <h2 id="main-title">Welcome to Brokey-Poly!</h2>
+        <p id="main-description">Explore the Dice Roller and Card Shuffle to enhance your gameplay experience.</p>
+        
+        <h2 id="purpose-title">The purpose of the website</h2>
+        <p id="purpose-description">We build this website to reduce resources by making a dice roller and a card shuffler.</p>
     </main>
     <footer>
-        &copy; 2024 Brokey-Poly. All rights reserved.
+        <p id="footer-text">&copy; 2024 Brokey-Poly. All rights reserved.</p>
     </footer>
+
+    <script>
+        const translations = {
+            en: {
+                "site-title": "Brokey-Poly",
+                "nav-home": "Home",
+                "nav-dice": "Dice Roller",
+                "nav-card": "Card Shuffle",
+                "language-label": "Language:",
+                "main-title": "Welcome to Brokey-Poly!",
+                "main-description": "Explore the Dice Roller and Card Shuffle to enhance your gameplay experience.",
+                "purpose-title": "The purpose of the website",
+                "purpose-description": "We build this website to reduce resources by making a dice roller and a card shuffler.",
+                "footer-text": "&copy; 2024 Brokey-Poly. All rights reserved."
+            },
+            th: {
+                "site-title": "เกมยาจก",
+                "nav-home": "หน้าหลัก",
+                "nav-dice": "ลูกเต๋า",
+                "nav-card": "การ์ดสุ่ม",
+                "language-label": "ภาษา:",
+                "main-title": "ยินดีต้อนรับสู่เกมยาจก!",
+                "main-description": "สำรวจลูกเต๋าและการ์ดสุ่มเพื่อเพิ่มความสนุกในเกมของคุณ",
+                "purpose-title": "วัตถุประสงค์ของเว็บไซต์",
+                "purpose-description": "เราสร้างเว็บไซต์นี้เพื่อลดทรัพยากรด้วยการทำลูกเต๋าและการ์ดสุ่ม",
+                "footer-text": "&copy; 2024 เกมยาจก สงวนลิขสิทธิ์."
+            }
+        };
+
+        function translatePage() {
+            const currentLanguage = document.getElementById("language").value;
+            const elementsToTranslate = document.querySelectorAll("[id]");
+
+            elementsToTranslate.forEach(element => {
+                const key = element.id;
+                if (translations[currentLanguage][key]) {
+                    element.innerHTML = translations[currentLanguage][key];
+                }
+            });
+        }
+    </script>
 </body>
 </html>
