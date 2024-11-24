@@ -49,6 +49,10 @@
             color: black;
             box-shadow: 0 0 10px #ffd700;
         }
+        .language-selector {
+            color: white;
+            margin-left: 20px;
+        }
         main {
             padding: 50px;
         }
@@ -100,9 +104,16 @@
                 <li><a href="card-shuffle.html" class="active">Card Shuffle</a></li>
             </ul>
         </nav>
+        <div class="language-selector">
+            <label for="language">Language:</label>
+            <select id="language" onchange="translatePage()">
+                <option value="en">English</option>
+                <option value="th">ภาษาไทย</option>
+            </select>
+        </div>
     </header>
     <main>
-        <h2>Shuffle the Cards!</h2>
+        <h2>Dig Through Trash!</h2>
         <div class="card-container" id="card">Click "Shuffle" to see what you found!</div>
         <button onclick="shuffleCard()">Shuffle</button>
     </main>
@@ -111,18 +122,41 @@
     </footer>
 
     <script>
+        const messages = {
+            en: [
+                "You found an old can and sold it for 5 coins.",
+                "You discovered a broken chair and sold it for 15 coins.",
+                "You stumbled upon a rare coin worth 50 coins!",
+                "You got your hands dirty for nothing. No luck this time!",
+                "You found a plastic bottle and sold it for 10 coins.",
+                "You found some old newspapers and earned 20 coins.",
+                "You found a broken clock worth 30 coins!"
+            ],
+            th: [
+                "คุณพบกระป๋องเก่าและขายได้ 5 เหรียญ",
+                "คุณพบเก้าอี้หักและขายได้ 15 เหรียญ",
+                "คุณเจอเหรียญหายากมูลค่า 50 เหรียญ!",
+                "คุณค้นเจอแต่ไม่ได้อะไรเลย โชคไม่ดีครั้งนี้!",
+                "คุณพบขวดพลาสติกและขายได้ 10 เหรียญ",
+                "คุณเจอหนังสือพิมพ์เก่าและได้เงิน 20 เหรียญ",
+                "คุณพบวิทยุพังและขายได้ 30 เหรียญ!"
+            ]
+        };
+
+        let currentLanguage = "en";
+
         function shuffleCard() {
-            const messages = [
-                "You found a metal scrap and sold it for 200!",
-                "You tripped over a rock and lost 50.",
-                "You discovered a treasure chest with 500 coins!",
-                "You helped an old man and received 100 as a reward.",
-                "You found a shiny gem worth 300!",
-                "You slipped and broke your tool. Repair costs 150.",
-                "You found an abandoned wallet and kept 50."
-            ];
-            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            const randomMessage = messages[currentLanguage][Math.floor(Math.random() * messages[currentLanguage].length)];
             document.getElementById("card").textContent = randomMessage;
+        }
+
+        function translatePage() {
+            const languageSelector = document.getElementById("language");
+            currentLanguage = languageSelector.value;
+
+            // Update static page content based on language
+            document.querySelector("h2").textContent = currentLanguage === "en" ? "Dig Through Trash!" : "ค้นขยะ!";
+            document.querySelector("button").textContent = currentLanguage === "en" ? "Shuffle" : "สับเปลี่ยน";
         }
     </script>
 </body>
