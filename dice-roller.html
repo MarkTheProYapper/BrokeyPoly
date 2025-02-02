@@ -9,25 +9,53 @@
 <body>
   <!-- Navigation Bar -->
   <header>
-    <h1>Russian Roulette Game</h1>
+    <h1 id="header-title">Russian Roulette Game</h1>
     <nav>
       <ul>
         <li><a href="Hompage.html" id="nav-home">Home</a></li>
-        <li><a href="dice-roller.html" class="active" id="nav-dice">Dice Roller</a></li>
+        <li><a href="dice-roller.html" id="nav-dice" class="active">Dice Roller</a></li>
         <li><a href="card-shuffle.html" id="nav-card">Card Shuffle</a></li>
         <li><a href="russian-roulette.html" id="nav-roulette">Russian Roulette</a></li>
       </ul>
     </nav>
+    <div class="language-selector">
+      <label for="language">Select Language:</label>
+      <select id="language" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="th">ภาษาไทย</option>
+      </select>
+    </div>
   </header>
 
   <!-- Content of Dice Roller Page -->
   <div>
-    <h2>Roll the Dice</h2>
-    <p>Click to roll the dice and see your fate!</p>
+    <h2 id="dice-title">Roll the Dice</h2>
+    <p id="dice-description">Click the button to roll the dice!</p>
+    <button onclick="rollDice()">Roll Dice</button>
+    <div id="dice-result"></div>
   </div>
 
   <footer>
     <p>&copy; 2025 Your Game. All Rights Reserved.</p>
   </footer>
+
+  <script>
+    function rollDice() {
+      const result = Math.floor(Math.random() * 6) + 1;
+      document.getElementById('dice-result').innerHTML = "You rolled: " + result;
+    }
+
+    function changeLanguage() {
+      var language = document.getElementById("language").value;
+
+      if (language === "th") {
+        document.getElementById("dice-title").innerText = "ทอยลูกเต๋า";
+        document.getElementById("dice-description").innerText = "คลิกปุ่มเพื่อทอยลูกเต๋า!";
+      } else {
+        document.getElementById("dice-title").innerText = "Roll the Dice";
+        document.getElementById("dice-description").innerText = "Click the button to roll the dice!";
+      }
+    }
+  </script>
 </body>
 </html>
