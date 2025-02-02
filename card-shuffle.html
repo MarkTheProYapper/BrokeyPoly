@@ -1,33 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Card Shuffle</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Shuffle - Brokey Poly</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <header>
-    <h1>Brokey Poly</h1>
-    <nav>
-      <ul>
-        <li><a href="Hompage.html" id="nav-home">Home</a></li>
-        <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
-        <li><a href="card-shuffle.html" class="active" id="nav-card">Card Shuffle</a></li>
-        <li><a href="russian-roulette.html" id="nav-roulette">Russian Roulette</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <h1 id="header-title">Brokey Poly</h1>
+        <nav>
+            <ul>
+                <li><a href="Hompage.html" id="nav-home">Home</a></li>
+                <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
+                <li><a href="card-shuffle.html" id="nav-card" class="active">Card Shuffle</a></li>
+                <li><a href="russian-roulette.html" id="nav-roulette">Russian Roulette</a></li>
+            </ul>
+        </nav>
+        <div class="language-selector">
+            <select id="language" onchange="changeLanguage()">
+                <option value="en">English</option>
+                <option value="th">ภาษาไทย</option>
+            </select>
+        </div>
+    </header>
 
-  <!-- Content of Card Shuffle Page -->
-  <div>
-    <h2>Shuffle the Cards</h2>
-    <p>Click to shuffle the deck!</p>
-  </div>
+    <div class="container">
+        <h2 id="card-title">Draw a Card</h2>
+        <p id="card-description">Click the button to draw a card and see your fate!</p>
+        <button onclick="drawCard()">Draw Card</button>
+        <div id="card-display" class="card-container"></div>
+    </div>
 
-  <footer>
-    <p>&copy; 2025 Your Game. All Rights Reserved.</p>
-  </footer>
+    <footer>
+        <p>&copy; 2025 Brokey Poly. All Rights Reserved.</p>
+    </footer>
+
+    <script src="translation.js"></script>
+    <script src="card-shuffle.js"></script>
 </body>
 </html>
