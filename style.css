@@ -1,117 +1,136 @@
-/* Global Styles */
+/* General Styles */
 body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f7f7f7;
-  text-align: center;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    text-align: center;
 }
 
+/* Header */
 header {
-  background-color: #333;
-  color: white;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header h1 {
-  margin: 0;
-  font-size: 24px;
+    margin: 0;
+    font-size: 24px;
 }
 
+/* Navigation Bar */
 nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
 }
 
 nav ul li {
-  margin-left: 20px;
+    margin-left: 20px;
 }
 
 nav ul li a {
-  text-decoration: none;
-  color: white;
-  font-size: 18px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  transition: all 0.3s ease;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
 nav ul li a:hover {
-  color: #ffd700;
+    color: #ffd700;
 }
 
 nav ul li a.active {
-  background-color: #ffd700;
-  color: black;
-  box-shadow: 0 0 10px #ffd700;
+    background-color: #ffd700;
+    color: black;
+    box-shadow: 0 0 10px #ffd700;
 }
 
 /* Language Selector */
 .language-selector {
-  color: white;
-  margin-left: 20px;
+    color: white;
+    margin-left: 20px;
 }
 
-.language-selector select {
-  padding: 5px;
-  font-size: 16px;
-}
-
-/* Centered Containers */
+/* Main Content Container */
 .container {
-  margin-top: 50px;
+    text-align: center;
+    margin-top: 50px;
 }
 
-/* Dice Styling */
+/* Dice Roller */
+.dice-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .dice {
-  font-size: 150px; /* Bigger dice */
-  margin: 20px;
+    font-size: 120px;
+    margin: 20px;
+}
+
+/* Card Shuffle */
+.card-container {
+    margin-top: 30px;
+}
+
+#card-result {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Russian Roulette */
+#player-section {
+    margin: 10px 0;
+}
+
+#player-list p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+#game-status p {
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Buttons */
+button {
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background-color: #ffd700;
+    color: black;
 }
 
 /* Footer */
 footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
+    background-color: #333;
+    color: white;
     text-align: center;
-  }
-
-  nav ul {
-    flex-direction: column;
-  }
-
-  nav ul li {
-    margin: 10px 0;
-  }
-
-  .language-selector {
-    margin-top: 10px;
-  }
-
-.card-container {
-    font-size: 20px;
-    margin-top: 20px;
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    display: inline-block;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-}
-
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
