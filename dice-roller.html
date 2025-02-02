@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dice Roller</title>
+  <title>Dice Roller - Brokey Poly</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Navigation Bar -->
+  <!-- Header -->
   <header>
-    <h1 id="header-title">Russian Roulette Game</h1>
+    <h1 id="header-title">Brokey Poly</h1>
     <nav>
       <ul>
         <li><a href="Hompage.html" id="nav-home">Home</a></li>
@@ -33,26 +33,28 @@
     <p id="dice-description">Click the button to roll the dice!</p>
     <button onclick="rollDice()">Roll Dice</button>
     <div class="dice">
-      <span id="dice-result">🎲</span> <!-- Dice symbol as default -->
+      <span id="dice-result">🎲</span>
     </div>
   </div>
 
   <footer>
-    <p>&copy; 2025 Your Game. All Rights Reserved.</p>
+    <p>&copy; 2025 Brokey Poly. All Rights Reserved.</p>
   </footer>
 
   <script>
+    // Function to roll the dice
     function rollDice() {
-      const result = Math.floor(Math.random() * 6) + 1; // Random number between 1 and 6
-      const diceEmoji = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"]; // Dice faces using emojis
-      document.getElementById('dice-result').innerHTML = diceEmoji[result - 1]; // Display dice face based on the result
+      const result = Math.floor(Math.random() * 6) + 1;
+      const diceEmoji = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"];
+      document.getElementById('dice-result').innerHTML = diceEmoji[result - 1];
     }
 
+    // Function to handle language change
     function changeLanguage() {
       var language = document.getElementById("language").value;
 
       if (language === "th") {
-        document.getElementById("header-title").innerText = "เกมรูเล็ตต์รัสเซีย";
+        document.getElementById("header-title").innerText = "บโรคีย์ โพลี";
         document.getElementById("nav-home").innerText = "หน้าแรก";
         document.getElementById("nav-dice").innerText = "ทอยลูกเต๋า";
         document.getElementById("nav-card").innerText = "สับไพ่";
@@ -60,7 +62,7 @@
         document.getElementById("dice-title").innerText = "ทอยลูกเต๋า";
         document.getElementById("dice-description").innerText = "คลิกปุ่มเพื่อทอยลูกเต๋า!";
       } else {
-        document.getElementById("header-title").innerText = "Russian Roulette Game";
+        document.getElementById("header-title").innerText = "Brokey Poly";
         document.getElementById("nav-home").innerText = "Home";
         document.getElementById("nav-dice").innerText = "Dice Roller";
         document.getElementById("nav-card").innerText = "Card Shuffle";
