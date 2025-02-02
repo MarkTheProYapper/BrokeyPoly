@@ -65,12 +65,16 @@ nav ul li a.active {
 /* Dice Roller Specific Styles */
 .dice-container {
   margin-top: 50px;
+  display: flex;
+  justify-content: center; /* Center the dice container */
+  align-items: center; /* Center the dice container vertically */
+  flex-direction: column; /* Stack the elements vertically */
+  height: 300px; /* Give some height to center vertically */
 }
 
 .dice {
   font-size: 150px;  /* Larger dice size */
   margin: 20px;
-  display: inline-block;
 }
 
 button {
@@ -93,4 +97,6 @@ footer {
   background-color: #333;
   color: white;
   text-align: center;
-  
+  padding: 10px 0;
+  position: fixed;
+  b
