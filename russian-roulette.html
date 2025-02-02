@@ -1,33 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Russian Roulette</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Russian Roulette - Brokey Poly</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <header>
-    <h1>Russian Roulette Game</h1>
-    <nav>
-      <ul>
-        <li><a href="Hompage.html" id="nav-home">Home</a></li>
-        <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
-        <li><a href="card-shuffle.html" id="nav-card">Card Shuffle</a></li>
-        <li><a href="russian-roulette.html" class="active" id="nav-roulette">Russian Roulette</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <h1 id="header-title">Brokey Poly</h1>
+        <nav>
+            <ul>
+                <li><a href="Hompage.html" id="nav-home">Home</a></li>
+                <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
+                <li><a href="card-shuffle.html" id="nav-card">Card Shuffle</a></li>
+                <li><a href="russian-roulette.html" id="nav-roulette" class="active">Russian Roulette</a></li>
+            </ul>
+        </nav>
+        <div class="language-selector">
+            <select id="language" onchange="changeLanguage()">
+                <option value="en">English</option>
+                <option value="th">ภาษาไทย</option>
+            </select>
+        </div>
+    </header>
 
-  <!-- Content of Russian Roulette Page -->
-  <div>
-    <h2>Spin the Cylinder!</h2>
-    <p>Click to spin and see your fate in the Russian Roulette game!</p>
-  </div>
+    <div class="container">
+        <h2 id="roulette-title">Russian Roulette</h2>
+        <p id="roulette-description">Add two players and take turns pulling the trigger!</p>
 
-  <footer>
-    <p>&copy; 2025 Your Game. All Rights Reserved.</p>
-  </footer>
+        <div id="player-section">
+            <input type="text" id="player-name" placeholder="Enter player name">
+            <button onclick="addPlayer()">Add Player</button>
+        </div>
+
+        <div id="player-list"></div>
+        <button onclick="startGame()" id="start-btn" disabled>Start Game</button>
+        <div id="game-status"></div>
+        <button id="shoot-btn" onclick="shoot()" disabled>Pull Trigger</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Brokey Poly. All Rights Reserved.</p>
+    </footer>
+
+    <script src="translation.js"></script>
+    <script src="russian-roulette.js"></script>
 </body>
 </html>
