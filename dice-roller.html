@@ -28,11 +28,13 @@
   </header>
 
   <!-- Content of Dice Roller Page -->
-  <div>
+  <div class="dice-container">
     <h2 id="dice-title">Roll the Dice</h2>
     <p id="dice-description">Click the button to roll the dice!</p>
     <button onclick="rollDice()">Roll Dice</button>
-    <div id="dice-result"></div>
+    <div class="dice">
+      <span id="dice-result">🎲</span> <!-- Dice symbol as default -->
+    </div>
   </div>
 
   <footer>
@@ -41,17 +43,28 @@
 
   <script>
     function rollDice() {
-      const result = Math.floor(Math.random() * 6) + 1;
-      document.getElementById('dice-result').innerHTML = "You rolled: " + result;
+      const result = Math.floor(Math.random() * 6) + 1; // Random number between 1 and 6
+      const diceEmoji = ["⚀", "⚁", "⚂", "⚃", "⚄", "⚅"]; // Dice faces using emojis
+      document.getElementById('dice-result').innerHTML = diceEmoji[result - 1]; // Display dice face based on the result
     }
 
     function changeLanguage() {
       var language = document.getElementById("language").value;
 
       if (language === "th") {
+        document.getElementById("header-title").innerText = "เกมรูเล็ตต์รัสเซีย";
+        document.getElementById("nav-home").innerText = "หน้าแรก";
+        document.getElementById("nav-dice").innerText = "ทอยลูกเต๋า";
+        document.getElementById("nav-card").innerText = "สับไพ่";
+        document.getElementById("nav-roulette").innerText = "รูเล็ตต์รัสเซีย";
         document.getElementById("dice-title").innerText = "ทอยลูกเต๋า";
         document.getElementById("dice-description").innerText = "คลิกปุ่มเพื่อทอยลูกเต๋า!";
       } else {
+        document.getElementById("header-title").innerText = "Russian Roulette Game";
+        document.getElementById("nav-home").innerText = "Home";
+        document.getElementById("nav-dice").innerText = "Dice Roller";
+        document.getElementById("nav-card").innerText = "Card Shuffle";
+        document.getElementById("nav-roulette").innerText = "Russian Roulette";
         document.getElementById("dice-title").innerText = "Roll the Dice";
         document.getElementById("dice-description").innerText = "Click the button to roll the dice!";
       }
