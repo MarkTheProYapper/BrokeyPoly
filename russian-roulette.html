@@ -3,212 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Russian Roulette Game</title>
-  <style>
-    /* Basic theme */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #222;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-
-    h1 {
-      margin-top: 20px;
-      color: #f1c40f;
-    }
-
-    /* Navigation bar */
-    nav {
-      background-color: #34495e;
-      padding: 10px;
-    }
-
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-    }
-
-    nav ul li {
-      margin: 0 15px;
-    }
-
-    nav ul li a {
-      color: #ecf0f1;
-      text-decoration: none;
-      font-size: 1.2em;
-    }
-
-    nav ul li a:hover {
-      color: #f1c40f;
-    }
-
-    /* Highlight active link */
-    nav ul li a.active {
-      color: #f1c40f;
-      font-weight: bold;
-    }
-
-    /* Language selector */
-    #language-selector {
-      margin-top: 20px;
-      font-size: 1.2em;
-      color: #ecf0f1;
-      cursor: pointer;
-    }
-
-    #language-selector select {
-      background-color: #34495e;
-      color: #ecf0f1;
-      font-size: 1.2em;
-      border: none;
-      padding: 5px 10px;
-    }
-
-    /* Game and button styling */
-    #players {
-      margin-top: 50px;
-    }
-
-    .player-button {
-      background-color: #2ecc71;
-      border: none;
-      color: #fff;
-      padding: 15px 30px;
-      font-size: 1.2em;
-      margin: 10px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    .player-button:disabled {
-      background-color: #95a5a6;
-    }
-
-    #result {
-      font-size: 1.5em;
-      margin-top: 20px;
-      color: #e74c3c;
-    }
-
-  </style>
+  <title>Russian Roulette</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Navigation Bar -->
-  <nav>
-    <ul>
-      <li><a href="Hompage.html" id="nav-home">Home</a></li>
-      <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
-      <li><a href="card-shuffle.html" id="nav-card">Card Shuffle</a></li>
-      <li><a href="russian-roulette.html" class="active" id="nav-roulette">Russian Roulette</a></li> <!-- Active page -->
-    </ul>
-  </nav>
+  <header>
+    <h1>Russian Roulette Game</h1>
+    <nav>
+      <ul>
+        <li><a href="Hompage.html" id="nav-home">Home</a></li>
+        <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
+        <li><a href="card-shuffle.html" id="nav-card">Card Shuffle</a></li>
+        <li><a href="russian-roulette.html" class="active" id="nav-roulette">Russian Roulette</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- Language Selector -->
-  <div id="language-selector">
-    <label for="language">Select Language: </label>
-    <select id="language">
-      <option value="en">English</option>
-      <option value="th">ไทย</option>
-    </select>
+  <!-- Content of Russian Roulette Page -->
+  <div>
+    <h2>Spin the Cylinder!</h2>
+    <p>Click to spin and see your fate in the Russian Roulette game!</p>
   </div>
 
-  <h1 id="game-title">Russian Roulette Game</h1>
-
-  <div id="players">
-    <button class="player-button" id="player1">Player 1 Spin</button>
-    <button class="player-button" id="player2">Player 2 Spin</button>
-    <button class="player-button" id="player3">Player 3 Spin</button>
-    <button class="player-button" id="player4">Player 4 Spin</button>
-  </div>
-  
-  <div id="result"></div>
-
-  <script>
-    const maxPlayers = 4;
-    let currentPlayer = 1;
-
-    const translations = {
-      en: {
-        title: "Russian Roulette Game",
-        playerText: "Player %d Spin",
-        safeText: "Click to reload! You're safe!",
-        boomText: "BOOM! You lost!",
-        homeLink: "Home",
-        diceLink: "Dice Roller",
-        cardLink: "Card Shuffle",
-        selectLang: "Select Language: "
-      },
-      th: {
-        title: "เกมรูเล็ตต์รัสเซีย",
-        playerText: "ผู้เล่น %d หมุน",
-        safeText: "คลิกเพื่อโหลดใหม่! คุณปลอดภัย!",
-        boomText: "BOOM! คุณแพ้!",
-        homeLink: "หน้าหลัก",
-        diceLink: "ทอยลูกเต๋า",
-        cardLink: "สับไพ่",
-        selectLang: "เลือกภาษา: "
-      }
-    };
-
-    function updateLanguage(language) {
-      document.getElementById("game-title").textContent = translations[language].title;
-
-      // Update player buttons text
-      for (let i = 1; i <= maxPlayers; i++) {
-        document.getElementById(`player${i}`).textContent = translations[language].playerText.replace("%d", i);
-      }
-
-      // Update result text
-      document.getElementById("result").textContent = '';
-
-      // Update navigation links
-      document.getElementById("nav-home").textContent = translations[language].homeLink;
-      document.getElementById("nav-dice").textContent = translations[language].diceLink;
-      document.getElementById("nav-card").textContent = translations[language].cardLink;
-
-      // Update language selector label
-      document.querySelector("label[for='language']").textContent = translations[language].selectLang;
-    }
-
-    // Russian Roulette game logic
-    function spin() {
-      // Russian Roulette with 6 chambers (1 bullet, 5 blanks)
-      const chambers = [false, false, false, false, false, true]; // 1 is bullet, rest are blanks
-      chambers.sort(() => Math.random() - 0.5); // Randomize
-
-      // Check if the player got the bullet or not
-      const result = chambers[0] ? translations[currentLang].boomText : translations[currentLang].safeText;
-      document.getElementById("result").textContent = result;
-
-      // Disable all buttons after the game
-      for (let i = 1; i <= maxPlayers; i++) {
-        document.getElementById(`player${i}`).disabled = true;
-      }
-
-      currentPlayer++;
-      if (currentPlayer > maxPlayers) currentPlayer = 1;
-      document.getElementById(`player${currentPlayer}`).disabled = false;
-    }
-
-    let currentLang = 'en'; // Default language
-    document.getElementById("language").addEventListener("change", (e) => {
-      currentLang = e.target.value;
-      updateLanguage(currentLang);
-    });
-
-    // Attach spin event to player buttons
-    for (let i = 1; i <= maxPlayers; i++) {
-      document.getElementById(`player${i}`).addEventListener("click", spin);
-    }
-
-    // Initialize language
-    updateLanguage(currentLang);
-  </script>
+  <footer>
+    <p>&copy; 2025 Your Game. All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
