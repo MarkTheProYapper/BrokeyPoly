@@ -73,30 +73,4 @@ nav ul li a.active {
 }
 
 .dice {
-  font-size: 150px;  /* Larger dice size */
-  margin: 20px;
-}
-
-button {
-  font-size: 18px;
-  padding: 10px 20px;
-  border: none;
-  background-color: #333;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #ffd700;
-}
-
-/* Footer */
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-  position: fixed;
-  b
+  
