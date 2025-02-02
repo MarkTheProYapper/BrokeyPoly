@@ -3,31 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <title>Brokey Poly</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Navigation Bar -->
   <header>
-    <h1>Russian Roulette Game</h1>
+    <h1 id="header-title">Brokey Poly</h1>
     <nav>
       <ul>
-        <li><a href="Hompage.html" class="active" id="nav-home">Home</a></li>
+        <li><a href="Hompage.html" id="nav-home" class="active">Home</a></li>
         <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
         <li><a href="card-shuffle.html" id="nav-card">Card Shuffle</a></li>
         <li><a href="russian-roulette.html" id="nav-roulette">Russian Roulette</a></li>
       </ul>
     </nav>
+    <div class="language-selector">
+      <label for="language">Select Language:</label>
+      <select id="language" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="th">ภาษาไทย</option>
+      </select>
+    </div>
   </header>
 
-  <!-- Content of Home Page -->
-  <div>
-    <h2>Welcome to the Russian Roulette Game</h2>
-    <p>Enjoy and stay safe!</p>
+  <div class="container">
+    <h2 id="home-title">Welcome to Brokey Poly!</h2>
+    <p id="home-description">The ultimate board game experience.</p>
   </div>
 
   <footer>
-    <p>&copy; 2025 Your Game. All Rights Reserved.</p>
+    <p>&copy; 2025 Brokey Poly. All Rights Reserved.</p>
   </footer>
+
+  <script src="translation.js"></script>
 </body>
 </html>
