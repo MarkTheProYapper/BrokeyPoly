@@ -62,15 +62,44 @@ nav ul li a.active {
   font-size: 16px;
 }
 
-/* Dice Roller Specific Styles */
-.dice-container {
+/* Centered Containers */
+.container {
   margin-top: 50px;
-  display: flex;
-  justify-content: center; /* Center the dice container */
-  align-items: center; /* Center the dice container vertically */
-  flex-direction: column; /* Stack the elements vertically */
-  height: 300px; /* Give some height to center vertically */
 }
 
+/* Dice Styling */
 .dice {
-  
+  font-size: 150px; /* Bigger dice */
+  margin: 20px;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  .language-selector {
+    margin-top: 10px;
+  }
+}
