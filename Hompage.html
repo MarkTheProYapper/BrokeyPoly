@@ -1,141 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brokey-Poly</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f7f7f7;
-            text-align: center;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        nav ul li {
-            margin-left: 20px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            font-size: 18px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        nav ul li a:hover {
-            color: #ffd700;
-        }
-        nav ul li a.active {
-            background-color: #ffd700;
-            color: black;
-            box-shadow: 0 0 10px #ffd700;
-        }
-        .language-selector {
-            color: white;
-            margin-left: 20px;
-        }
-        main {
-            padding: 50px;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1 id="site-title">Brokey-Poly</h1>
-        <nav>
-            <ul>
-                <li><a href="Hompage.html" class="active" id="nav-home">Home</a></li>
-                <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
-                <li><a href="card-shuffle.html" id="nav-card">Card Shuffle</a></li>
-                <li><a href="russian-roulette.html" id="nav-roulette">Russian Roulette</a></li>
-            </ul>
-        </nav>
-        <div class="language-selector">
-            <label for="language" id="language-label">Language:</label>
-            <select id="language" onchange="translatePage()">
-                <option value="en">English</option>
-                <option value="th">ภาษาไทย</option>
-            </select>
-        </div>
-    </header>
-    <main>
-        <h2 id="main-title">Welcome to Brokey-Poly!</h2>
-        <p id="main-description">Explore the Dice Roller and Card Shuffle to enhance your gameplay experience.</p>
-        
-        <h2 id="purpose-title">The purpose of the website</h2>
-        <p id="purpose-description">We build this website to reduce resources by making a dice roller and a card shuffler.</p>
-    </main>
-    <footer>
-        <p id="footer-text">&copy; 2024 Brokey-Poly. All rights reserved.</p>
-    </footer>
+  <!-- Navigation Bar -->
+  <header>
+    <h1>Russian Roulette Game</h1>
+    <nav>
+      <ul>
+        <li><a href="Hompage.html" class="active" id="nav-home">Home</a></li>
+        <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
+        <li><a href="card-shuffle.html" id="nav-card">Card Shuffle</a></li>
+        <li><a href="russian-roulette.html" id="nav-roulette">Russian Roulette</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <script>
-        const translations = {
-            en: {
-                "site-title": "Brokey-Poly",
-                "nav-home": "Home",
-                "nav-dice": "Dice Roller",
-                "nav-card": "Card Shuffle",
-                "language-label": "Language:",
-                "main-title": "Welcome to Brokey-Poly!",
-                "main-description": "Explore the Dice Roller and Card Shuffle to enhance your gameplay experience.",
-                "purpose-title": "The purpose of the website",
-                "purpose-description": "We build this website to reduce resources by making a dice roller and a card shuffler.",
-                "footer-text": "&copy; 2024 Brokey-Poly. All rights reserved."
-            },
-            th: {
-                "site-title": "เกมยาจก",
-                "nav-home": "หน้าหลัก",
-                "nav-dice": "ลูกเต๋า",
-                "nav-card": "การ์ดสุ่ม",
-                "language-label": "ภาษา:",
-                "main-title": "ยินดีต้อนรับสู่เกมยาจก!",
-                "main-description": "สำรวจลูกเต๋าและการ์ดสุ่มเพื่อเพิ่มความสนุกในเกมของคุณ",
-                "purpose-title": "วัตถุประสงค์ของเว็บไซต์",
-                "purpose-description": "เราสร้างเว็บไซต์นี้เพื่อลดทรัพยากรด้วยการทำลูกเต๋าและการ์ดสุ่ม",
-                "footer-text": "&copy; 2024 เกมยาจก สงวนลิขสิทธิ์."
-            }
-        };
+  <!-- Content of Home Page -->
+  <div>
+    <h2>Welcome to the Russian Roulette Game</h2>
+    <p>Enjoy and stay safe!</p>
+  </div>
 
-        function translatePage() {
-            const currentLanguage = document.getElementById("language").value;
-            const elementsToTranslate = document.querySelectorAll("[id]");
-
-            elementsToTranslate.forEach(element => {
-                const key = element.id;
-                if (translations[currentLanguage][key]) {
-                    element.innerHTML = translations[currentLanguage][key];
-                }
-            });
-        }
-    </script>
+  <footer>
+    <p>&copy; 2025 Your Game. All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
