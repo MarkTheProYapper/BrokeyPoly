@@ -1,164 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Shuffle - Brokey-Poly</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f7f7f7;
-            text-align: center;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        nav ul li {
-            margin-left: 20px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            font-size: 18px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        nav ul li a:hover {
-            color: #ffd700;
-        }
-        nav ul li a.active {
-            background-color: #ffd700;
-            color: black;
-            box-shadow: 0 0 10px #ffd700;
-        }
-        .language-selector {
-            color: white;
-            margin-left: 20px;
-        }
-        main {
-            padding: 50px;
-        }
-        .card-container {
-            margin: 30px auto;
-            width: 300px;
-            height: 150px;
-            background-color: white;
-            border: 2px solid #333;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 18px;
-            color: white;
-            background-color: #333;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #ffd700;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Shuffle</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Brokey-Poly</h1>
-        <nav>
-            <ul>
-                <li><a href="Hompage.html">Home</a></li>
-                <li><a href="dice-roller.html">Dice Roller</a></li>
-                <li><a href="card-shuffle.html" class="active">Card Shuffle</a></li>
-                <li><a href="russian-roulette.html" id="nav-roulette">Russian Roulette</a></li>
-            </ul>
-        </nav>
-        <div class="language-selector">
-            <label for="language">Language:</label>
-            <select id="language" onchange="translatePage()">
-                <option value="en">English</option>
-                <option value="th">ภาษาไทย</option>
-            </select>
-        </div>
-    </header>
-    <main>
-        <h2>Dig Through Trash!</h2>
-        <div class="card-container" id="card">Click "Shuffle" to see what you found!</div>
-        <button onclick="shuffleCard()">Shuffle</button>
-    </main>
-    <footer>
-        &copy; 2024 Brokey-Poly. All rights reserved.
-    </footer>
+  <!-- Navigation Bar -->
+  <header>
+    <h1>Russian Roulette Game</h1>
+    <nav>
+      <ul>
+        <li><a href="Hompage.html" id="nav-home">Home</a></li>
+        <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
+        <li><a href="card-shuffle.html" class="active" id="nav-card">Card Shuffle</a></li>
+        <li><a href="russian-roulette.html" id="nav-roulette">Russian Roulette</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <script>
-        const messages = {
-            en: [
-                "You found an old can and sold it for 5 coins.",
-                "You discovered a broken chair and sold it for 15 coins.",
-                "You stumbled upon a rare coin worth 50 coins!",
-                "You got your hands dirty for nothing. No luck this time!",
-                "You found a plastic bottle and sold it for 10 coins.",
-                "You found some old newspapers and earned 20 coins.",
-                "You found a broken clock worth 30 coins!"
-            ],
-            th: [
-                "คุณพบกระป๋องเก่าและขายได้ 5 เหรียญ",
-                "คุณพบเก้าอี้หักและขายได้ 15 เหรียญ",
-                "คุณเจอเหรียญหายากมูลค่า 50 เหรียญ!",
-                "คุณค้นเจอแต่ไม่ได้อะไรเลย โชคไม่ดีครั้งนี้!",
-                "คุณพบขวดพลาสติกและขายได้ 10 เหรียญ",
-                "คุณเจอหนังสือพิมพ์เก่าและได้เงิน 20 เหรียญ",
-                "คุณพบวิทยุพังและขายได้ 30 เหรียญ!"
-            ]
-        };
+  <!-- Content of Card Shuffle Page -->
+  <div>
+    <h2>Shuffle the Cards</h2>
+    <p>Click to shuffle the deck!</p>
+  </div>
 
-        let currentLanguage = "en";
-
-        function shuffleCard() {
-            const randomMessage = messages[currentLanguage][Math.floor(Math.random() * messages[currentLanguage].length)];
-            document.getElementById("card").textContent = randomMessage;
-        }
-
-        function translatePage() {
-            const languageSelector = document.getElementById("language");
-            currentLanguage = languageSelector.value;
-
-            // Update static page content based on language
-            document.querySelector("h2").textContent = currentLanguage === "en" ? "Dig Through Trash!" : "ค้นขยะ!";
-            document.querySelector("button").textContent = currentLanguage === "en" ? "Shuffle" : "สับเปลี่ยน";
-        }
-    </script>
+  <footer>
+    <p>&copy; 2025 Your Game. All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
