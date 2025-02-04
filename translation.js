@@ -1,49 +1,67 @@
+// Store translations
 const translations = {
     en: {
         "game-title": "Brokey-Poly",
-        "roll-title": "Roll the Dice!",
-        "dice-count-label": "Number of Dice:",
-        "one-die": "One Die",
-        "two-dice": "Two Dice",
-        "roll-button": "Roll Dice",
-        "result-text": "Press 'Roll Dice' to see the result.",
-        "rolled-one": "You rolled a {0}!",
-        "rolled-two": "You rolled a {0} and a {1}!",
-        "lang-label": "Language:"
+        "nav-home": "Home",
+        "nav-dice": "Dice Roller",
+        "nav-card": "Card Shuffle",
+        "nav-russian": "Russian Roulette",
+        "lang-label": "Language:",
+        "card-title": "Card Shuffle",
+        "draw-card": "Draw a Card",
+        "russian-title": "Russian Roulette",
+        "add-player": "Add Player",
+        "start-game": "Start Game",
+        "game-result": "Waiting for players...",
+        "random-events": [
+            "You found $20 in a trash can!",
+            "You lost $10 while gambling!",
+            "You stepped on gum, lose a turn!",
+            "You found a rare item worth $50!",
+            "You got a free ride to the next checkpoint!"
+        ],
+        "winner-message": "{winner} wins! {loser} lost the game!"
     },
     th: {
         "game-title": "เกมยาจก",
-        "roll-title": "ทอยลูกเต๋า!",
-        "dice-count-label": "จำนวนลูกเต๋า:",
-        "one-die": "หนึ่งลูก",
-        "two-dice": "สองลูก",
-        "roll-button": "ทอยลูกเต๋า",
-        "result-text": "กด 'ทอยลูกเต๋า' เพื่อดูผลลัพธ์",
-        "rolled-one": "คุณทอยได้ {0}!",
-        "rolled-two": "คุณทอยได้ {0} และ {1}!",
-        "lang-label": "ภาษา:"
+        "nav-home": "หน้าแรก",
+        "nav-dice": "ทอยลูกเต๋า",
+        "nav-card": "สุ่มการ์ด",
+        "nav-russian": "รัสเซียนรูเล็ต",
+        "lang-label": "ภาษา:",
+        "card-title": "สุ่มการ์ด",
+        "draw-card": "จั่วการ์ด",
+        "russian-title": "รัสเซียนรูเล็ต",
+        "add-player": "เพิ่มผู้เล่น",
+        "start-game": "เริ่มเกม",
+        "game-result": "รอผู้เล่น...",
+        "random-events": [
+            "คุณขุดถังขยะแล้วพบเงิน 20 บาท!",
+            "คุณเสียเงิน 10 บาทไปกับการพนัน!",
+            "คุณเหยียบหมากฝรั่ง, เสียตาเดิน!",
+            "คุณพบไอเทมหายากมูลค่า 50 บาท!",
+            "คุณได้รับโดยสารฟรีไปยังจุดหมาย!"
+        ],
+        "winner-message": "{winner} ชนะ! {loser} แพ้!"
     }
 };
 
+// Function to update text when language changes
 function changeLanguage() {
     let selectedLang = document.getElementById("language").value;
-    localStorage.setItem("selectedLang", selectedLang);
-    applyTranslations();
-}
-
-function applyTranslations() {
-    let selectedLang = localStorage.getItem("selectedLang") || "en";
-    let elements = document.querySelectorAll("[id]");
-
-    elements.forEach((element) => {
-        let key = element.id;
+    localStorage.setItem("selectedLanguage", selectedLang);
+    
+    document.querySelectorAll("[id]").forEach(el => {
+        let key = el.id;
         if (translations[selectedLang][key]) {
-            element.innerText = translations[selectedLang][key];
+            el.innerText = translations[selectedLang][key];
         }
     });
 }
 
-function getTranslation(key) {
-    let selectedLang = localStorage.getItem("selectedLang") || "en";
-    return translations[selectedLang][key] || key;
-}
+// Apply saved language on page load
+document.addEventListener("DOMContentLoaded", () => {
+    let savedLang = localStorage.getItem("selectedLanguage") || "en";
+    document.getElementById("language").value = savedLang;
+    changeLanguage();
+});
