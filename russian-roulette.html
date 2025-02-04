@@ -1,75 +1,66 @@
+<!-- Russian Roulette (russian-roulette.html) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="russian-title">Russian Roulette</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="translation.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="translation.js" defer></script>
 </head>
 <body>
-
-<header>
-    <h1 id="game-title">Brokey-Poly</h1>
-    <nav>
-        <ul>
-            <li><a href="Hompage.html" id="nav-home">Home</a></li>
-            <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
-            <li><a href="card-shuffle.html" id="nav-card">Card Shuffle</a></li>
-            <li><a href="russian-roulette.html" id="nav-russian" class="active">Russian Roulette</a></li>
-        </ul>
-    </nav>
-</header>
-
-<!-- Language Selector -->
-<div class="language-selector">
-    <label for="language" id="lang-label">Language:</label>
-    <select id="language" onchange="changeLanguage()">
-        <option value="en">English</option>
-        <option value="th">ไทย</option>
-    </select>
-</div>
-
-<div class="container">
-    <h2 id="russian-title">Russian Roulette</h2>
-    <label for="player-name">Enter Player Name:</label>
-    <input type="text" id="player-name" placeholder="Enter name">
-    <button onclick="addPlayer()" id="add-player">Add Player</button>
-    <button onclick="startGame()" id="start-game">Start Game</button>
-    <p id="game-result">Waiting for players...</p>
-</div>
-
-<footer>
-    <p>&copy; 2025 Brokey-Poly. All rights reserved.</p>
-</footer>
-
-<script>
-let players = [];
-
-function addPlayer() {
-    let name = document.getElementById("player-name").value;
-    if (name && players.length < 2) {
-        players.push(name);
-        document.getElementById("game-result").innerText = players.join(" vs ");
-    } else {
-        alert("Only 2 players allowed per round.");
-    }
-}
-
-function startGame() {
-    if (players.length !== 2) {
-        alert("You need 2 players to start.");
-        return;
-    }
-    
-    let deathIndex = Math.floor(Math.random() * 2);
-    let loser = players[deathIndex];
-    let winner = players[1 - deathIndex];
-
-    document.getElementById("game-result").innerText = `${loser} lost the game! ${winner} wins!`;
-    players = []; // Reset for next round
-}
-</script>
-
+    <header>
+        <h1 id="game-title">Brokey-Poly</h1>
+        <nav>
+            <ul>
+                <li><a href="hompage.html" id="nav-home">Home</a></li>
+                <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
+                <li><a href="card-shuffle.html" id="nav-card">Card Shuffle</a></li>
+                <li><a href="russian-roulette.html" class="active" id="nav-russian">Russian Roulette</a></li>
+            </ul>
+        </nav>
+        <label id="lang-label">Language:</label>
+        <select id="language" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="th">ไทย</option>
+        </select>
+    </header>
+    <main>
+        <input type="text" id="player-name" placeholder="Enter name">
+        <button onclick="addPlayer()" id="add-player">Add Player</button>
+        <button onclick="startGame()" id="start-game">Start Game</button>
+        <p id="game-result">Waiting for players...</p>
+    </main>
+    <script>
+        let players = [];
+        
+        function addPlayer() {
+            let name = document.getElementById("player-name").value;
+            if (name && players.length < 2) {
+                players.push(name);
+                document.getElementById("game-result").innerText = players.join(" vs ");
+            } else {
+                alert("Only 2 players allowed per round.");
+            }
+        }
+        
+        function startGame() {
+            if (players.length !== 2) {
+                alert("You need 2 players to start.");
+                return;
+            }
+            
+            let deathIndex = Math.floor(Math.random() * 2);
+            let loser = players[deathIndex];
+            let winner = players[1 - deathIndex];
+            
+            let selectedLang = localStorage.getItem("selectedLanguage") || "en";
+            let messageTemplate = translations[selectedLang]["winner-message"];
+            let message = messageTemplate.replace("{winner}", winner).replace("{loser}", loser);
+            
+            document.getElementById("game-result").innerText = message;
+            players = [];
+        }
+    </script>
 </body>
 </html>
