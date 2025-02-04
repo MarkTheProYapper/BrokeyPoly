@@ -1,37 +1,49 @@
+const translations = {
+    en: {
+        "game-title": "Brokey-Poly",
+        "roll-title": "Roll the Dice!",
+        "dice-count-label": "Number of Dice:",
+        "one-die": "One Die",
+        "two-dice": "Two Dice",
+        "roll-button": "Roll Dice",
+        "result-text": "Press 'Roll Dice' to see the result.",
+        "rolled-one": "You rolled a {0}!",
+        "rolled-two": "You rolled a {0} and a {1}!",
+        "lang-label": "Language:"
+    },
+    th: {
+        "game-title": "เกมยาจก",
+        "roll-title": "ทอยลูกเต๋า!",
+        "dice-count-label": "จำนวนลูกเต๋า:",
+        "one-die": "หนึ่งลูก",
+        "two-dice": "สองลูก",
+        "roll-button": "ทอยลูกเต๋า",
+        "result-text": "กด 'ทอยลูกเต๋า' เพื่อดูผลลัพธ์",
+        "rolled-one": "คุณทอยได้ {0}!",
+        "rolled-two": "คุณทอยได้ {0} และ {1}!",
+        "lang-label": "ภาษา:"
+    }
+};
+
 function changeLanguage() {
-  var language = document.getElementById("language").value;
+    let selectedLang = document.getElementById("language").value;
+    localStorage.setItem("selectedLang", selectedLang);
+    applyTranslations();
+}
 
-  if (language === "th") {
-    document.getElementById("header-title").innerText = "บโรคีย์ โพลี";
-    document.getElementById("nav-home").innerText = "หน้าแรก";
-    document.getElementById("nav-dice").innerText = "ทอยลูกเต๋า";
-    document.getElementById("nav-card").innerText = "สับไพ่";
-    document.getElementById("nav-roulette").innerText = "รูเล็ตต์รัสเซีย";
+function applyTranslations() {
+    let selectedLang = localStorage.getItem("selectedLang") || "en";
+    let elements = document.querySelectorAll("[id]");
 
-    if (document.getElementById("home-title")) {
-      document.getElementById("home-title").innerText = "ยินดีต้อนรับสู่บโรคีย์โพลี!";
-      document.getElementById("home-description").innerText = "ประสบการณ์บอร์ดเกมสุดยอด";
-    }
+    elements.forEach((element) => {
+        let key = element.id;
+        if (translations[selectedLang][key]) {
+            element.innerText = translations[selectedLang][key];
+        }
+    });
+}
 
-    if (document.getElementById("dice-title")) {
-      document.getElementById("dice-title").innerText = "ทอยลูกเต๋า";
-      document.getElementById("dice-description").innerText = "คลิกปุ่มเพื่อทอยลูกเต๋า!";
-    }
-  } else {
-    document.getElementById("header-title").innerText = "Brokey Poly";
-    document.getElementById("nav-home").innerText = "Home";
-    document.getElementById("nav-dice").innerText = "Dice Roller";
-    document.getElementById("nav-card").innerText = "Card Shuffle";
-    document.getElementById("nav-roulette").innerText = "Russian Roulette";
-
-    if (document.getElementById("home-title")) {
-      document.getElementById("home-title").innerText = "Welcome to Brokey Poly!";
-      document.getElementById("home-description").innerText = "The ultimate board game experience.";
-    }
-
-    if (document.getElementById("dice-title")) {
-      document.getElementById("dice-title").innerText = "Roll the Dice";
-      document.getElementById("dice-description").innerText = "Click the button to roll the dice!";
-    }
-  }
+function getTranslation(key) {
+    let selectedLang = localStorage.getItem("selectedLang") || "en";
+    return translations[selectedLang][key] || key;
 }
