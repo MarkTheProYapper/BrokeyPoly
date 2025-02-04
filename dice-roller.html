@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brokey-Poly</title>
+    <title>Dice Roller - Brokey-Poly</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateInit"></script>
+    <script src="translation.js"></script>
 </head>
-<body>
+<body onload="applyTranslations()">
 
 <header>
-    <h1>Brokey-Poly</h1>
+    <h1 id="game-title">Brokey-Poly</h1>
     <nav>
         <ul>
-            <li><a href="hompage.html">Home</a></li>
+            <li><a href="homepage.html">Home</a></li>
             <li><a href="dice-roller.html" class="active">Dice Roller</a></li>
             <li><a href="card-shuffle.html">Card Shuffle</a></li>
             <li><a href="russian-roulette.html">Russian Roulette</a></li>
@@ -21,16 +21,22 @@
     </nav>
 </header>
 
-<!-- Google Translate -->
-<div id="google_translate_element" class="language-selector"></div>
+<!-- Language Selector -->
+<div class="language-selector">
+    <label for="language" id="lang-label">Language:</label>
+    <select id="language" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="th">ไทย</option>
+    </select>
+</div>
 
 <div class="container">
-    <h2 data-translate="roll-title">Roll the Dice!</h2>
+    <h2 id="roll-title">Roll the Dice!</h2>
     
-    <label for="dice-count" data-translate="dice-count-label">Number of Dice:</label>
+    <label for="dice-count" id="dice-count-label">Number of Dice:</label>
     <select id="dice-count">
-        <option value="1" data-translate="one-die">One Die</option>
-        <option value="2" data-translate="two-dice">Two Dice</option>
+        <option value="1" id="one-die">One Die</option>
+        <option value="2" id="two-dice">Two Dice</option>
     </select>
 
     <div class="dice-container">
@@ -38,9 +44,9 @@
         <div id="dice2" class="dice" style="display: none;">🎲</div>
     </div>
 
-    <button onclick="rollDice()" data-translate="roll-button">Roll Dice</button>
+    <button onclick="rollDice()" id="roll-button">Roll Dice</button>
     
-    <p id="result-text" data-translate="result-text">Press "Roll Dice" to see the result.</p>
+    <p id="result-text">Press "Roll Dice" to see the result.</p>
 </div>
 
 <footer>
@@ -48,10 +54,6 @@
 </footer>
 
 <script>
-function googleTranslateInit() {
-    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-}
-
 function rollDice() {
     let diceCount = document.getElementById("dice-count").value;
     let dice1 = Math.floor(Math.random() * 6) + 1;
@@ -62,10 +64,10 @@ function rollDice() {
     if (diceCount == "2") {
         document.getElementById("dice2").innerText = getDiceEmoji(dice2);
         document.getElementById("dice2").style.display = "inline-block";
-        document.getElementById("result-text").innerText = `You rolled a ${dice1} and a ${dice2}!`;
+        document.getElementById("result-text").innerText = getTranslation("rolled-two").replace("{0}", dice1).replace("{1}", dice2);
     } else {
         document.getElementById("dice2").style.display = "none";
-        document.getElementById("result-text").innerText = `You rolled a ${dice1}!`;
+        document.getElementById("result-text").innerText = getTranslation("rolled-one").replace("{0}", dice1);
     }
 }
 
