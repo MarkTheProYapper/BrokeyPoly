@@ -3,40 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Shuffle - Brokey Poly</title>
+    <title>Card Shuffle - Brokey-Poly</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateInit"></script>
 </head>
 <body>
-    <header>
-        <h1 id="header-title">Brokey Poly</h1>
-        <nav>
-            <ul>
-                <li><a href="Hompage.html" id="nav-home">Home</a></li>
-                <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
-                <li><a href="card-shuffle.html" id="nav-card" class="active">Card Shuffle</a></li>
-                <li><a href="russian-roulette.html" id="nav-roulette">Russian Roulette</a></li>
-            </ul>
-        </nav>
-        <div class="language-selector">
-            <select id="language" onchange="changeLanguage()">
-                <option value="en">English</option>
-                <option value="th">ภาษาไทย</option>
-            </select>
-        </div>
-    </header>
 
-    <div class="container">
-        <h2 id="card-title">Draw a Card</h2>
-        <p id="card-description">Click the button to draw a card and see your fate!</p>
-        <button onclick="drawCard()">Draw Card</button>
-        <div id="card-display" class="card-container"></div>
+<header>
+    <h1>Brokey-Poly</h1>
+    <nav>
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="dice-roller.html">Dice Roller</a></li>
+            <li><a href="card-shuffle.html" class="active">Card Shuffle</a></li>
+            <li><a href="russian-roulette.html">Russian Roulette</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Google Translate -->
+<div id="google_translate_element" class="language-selector"></div>
+
+<div class="container">
+    <h2 data-translate="shuffle-title">Shuffle the Cards!</h2>
+    <button onclick="shuffleCard()" data-translate="shuffle-button">Shuffle</button>
+    <div class="card-container">
+        <p id="card-result" data-translate="shuffle-result">Press the button to get your result.</p>
     </div>
+</div>
 
-    <footer>
-        <p>&copy; 2025 Brokey Poly. All Rights Reserved.</p>
-    </footer>
+<footer>
+    <p>&copy; 2025 Brokey-Poly. All rights reserved.</p>
+</footer>
 
-    <script src="translation.js"></script>
-    <script src="card-shuffle.js"></script>
+<script>
+function googleTranslateInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+
+const cards = [
+    "You dig a trash can and found $20!",
+    "You found a golden coin worth $100!",
+    "Oops! You stepped in gum and lost $10.",
+    "You met a rich guy, and he gave you $50.",
+    "Bad luck! A thief stole $30 from you.",
+    "You won a small lottery prize of $200!"
+];
+
+function shuffleCard() {
+    let randomCard = cards[Math.floor(Math.random() * cards.length)];
+    document.getElementById("card-result").innerText = randomCard;
+}
+</script>
+
 </body>
 </html>
