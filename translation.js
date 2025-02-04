@@ -13,6 +13,7 @@ const translations = {
         "add-player": "Add Player",
         "start-game": "Start Game",
         "game-result": "Waiting for players...",
+        "game-description": "Brokey-Poly is a fun and unpredictable board game where players navigate financial struggles, take risks, and attempt to survive in a world where fortune can change in an instant. Roll the dice, draw cards, and even test your luck in Russian Roulette! Will you make it big, or end up broke? Play to find out!",
         "random-events": [
             "You found $20 in a trash can!",
             "You lost $10 while gambling!",
@@ -35,6 +36,7 @@ const translations = {
         "add-player": "เพิ่มผู้เล่น",
         "start-game": "เริ่มเกม",
         "game-result": "รอผู้เล่น...",
+         "game-description": "เกมยาจกเป็นเกมกระดานที่เต็มไปด้วยความสนุกและความไม่แน่นอน ซึ่งผู้เล่นต้องเผชิญกับปัญหาทางการเงิน เสี่ยงโชค และพยายามเอาตัวรอดในโลกที่โชคชะตาสามารถเปลี่ยนแปลงได้ตลอดเวลา ทอยลูกเต๋า จั่วไพ่ และแม้กระทั่งลองเสี่ยงโชคในรัสเซียนรูเล็ต! คุณจะรวย หรือจะหมดตัว? เล่นแล้วมาดูกัน!",
         "random-events": [
             "คุณขุดถังขยะแล้วพบเงิน 20 บาท!",
             "คุณเสียเงิน 10 บาทไปกับการพนัน!",
