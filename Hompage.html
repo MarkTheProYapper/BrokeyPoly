@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brokey Poly</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="game-title">Brokey-Poly</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="translation.js"></script>
 </head>
 <body>
-  <header>
-    <h1 id="header-title">Brokey Poly</h1>
+
+<header>
+    <h1 id="game-title">Brokey-Poly</h1>
     <nav>
-      <ul>
-        <li><a href="Hompage.html" id="nav-home" class="active">Home</a></li>
-        <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
-        <li><a href="card-shuffle.html" id="nav-card">Card Shuffle</a></li>
-        <li><a href="russian-roulette.html" id="nav-roulette">Russian Roulette</a></li>
-      </ul>
+        <ul>
+            <li><a href="Hompage.html" id="nav-home" class="active">Home</a></li>
+            <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
+            <li><a href="card-shuffle.html" id="nav-card">Card Shuffle</a></li>
+            <li><a href="russian-roulette.html" id="nav-russian">Russian Roulette</a></li>
+        </ul>
     </nav>
-    <div class="language-selector">
-      <select id="language" onchange="changeLanguage()">
+</header>
+
+<!-- Language Selector -->
+<div class="language-selector">
+    <label for="language" id="lang-label">Language:</label>
+    <select id="language" onchange="changeLanguage()">
         <option value="en">English</option>
-        <option value="th">ภาษาไทย</option>
-      </select>
-    </div>
-  </header>
+        <option value="th">ไทย</option>
+    </select>
+</div>
 
-  <div class="container">
-    <h2 id="home-title">Welcome to Brokey Poly!</h2>
-    <p id="home-description">The ultimate board game experience.</p>
-  </div>
+<div class="container">
+    <h2>Welcome to Brokey-Poly!</h2>
+    <p>Choose a game from the navigation bar to start playing.</p>
+</div>
 
-  <footer>
-    <p>&copy; 2025 Brokey Poly. All Rights Reserved.</p>
-  </footer>
+<footer>
+    <p>&copy; 2025 Brokey-Poly. All rights reserved.</p>
+</footer>
 
-  <script src="translation.js"></script>
 </body>
 </html>
