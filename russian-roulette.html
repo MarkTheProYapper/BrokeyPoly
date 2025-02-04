@@ -3,46 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brokey-Poly</title>
+    <title id="russian-title">Russian Roulette</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateInit"></script>
+    <script src="translation.js"></script>
 </head>
 <body>
 
 <header>
-    <h1>Brokey-Poly</h1>
+    <h1 id="game-title">Brokey-Poly</h1>
     <nav>
         <ul>
-            <li><a href="hompage.html">Home</a></li>
-            <li><a href="dice-roller.html">Dice Roller</a></li>
-            <li><a href="card-shuffle.html">Card Shuffle</a></li>
-            <li><a href="russian-roulette.html" class="active">Russian Roulette</a></li>
+            <li><a href="Hompage.html" id="nav-home">Home</a></li>
+            <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
+            <li><a href="card-shuffle.html" id="nav-card">Card Shuffle</a></li>
+            <li><a href="russian-roulette.html" id="nav-russian" class="active">Russian Roulette</a></li>
         </ul>
     </nav>
 </header>
 
-<!-- Google Translate -->
-<div id="google_translate_element" class="language-selector"></div>
+<!-- Language Selector -->
+<div class="language-selector">
+    <label for="language" id="lang-label">Language:</label>
+    <select id="language" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="th">ไทย</option>
+    </select>
+</div>
 
 <div class="container">
-    <h2 data-translate="roulette-title">Russian Roulette</h2>
-    
-    <div id="player-section">
-        <h3 data-translate="add-players">Add Players (Max: 2)</h3>
-        <input type="text" id="player-name" placeholder="Enter Name" data-translate="name-placeholder">
-        <button onclick="addPlayer()" data-translate="add-button">Add</button>
-    </div>
-
-    <div id="player-list">
-        <h3 data-translate="current-players">Current Players:</h3>
-        <ul id="players"></ul>
-    </div>
-
-    <button id="start-game" onclick="startRoulette()" disabled data-translate="start-button">Start Game</button>
-    
-    <div id="game-status">
-        <p data-translate="status-message">Waiting for players...</p>
-    </div>
+    <h2 id="russian-title">Russian Roulette</h2>
+    <label for="player-name">Enter Player Name:</label>
+    <input type="text" id="player-name" placeholder="Enter name">
+    <button onclick="addPlayer()" id="add-player">Add Player</button>
+    <button onclick="startGame()" id="start-game">Start Game</button>
+    <p id="game-result">Waiting for players...</p>
 </div>
 
 <footer>
@@ -50,60 +44,30 @@
 </footer>
 
 <script>
-function googleTranslateInit() {
-    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-}
-
 let players = [];
 
 function addPlayer() {
-    let playerName = document.getElementById("player-name").value.trim();
+    let name = document.getElementById("player-name").value;
+    if (name && players.length < 2) {
+        players.push(name);
+        document.getElementById("game-result").innerText = players.join(" vs ");
+    } else {
+        alert("Only 2 players allowed per round.");
+    }
+}
+
+function startGame() {
+    if (players.length !== 2) {
+        alert("You need 2 players to start.");
+        return;
+    }
     
-    if (playerName === "") {
-        alert("Please enter a name.");
-        return;
-    }
+    let deathIndex = Math.floor(Math.random() * 2);
+    let loser = players[deathIndex];
+    let winner = players[1 - deathIndex];
 
-    if (players.length >= 2) {
-        alert("Only 2 players per round!");
-        return;
-    }
-
-    players.push(playerName);
-    updatePlayerList();
-
-    document.getElementById("player-name").value = "";
-
-    if (players.length === 2) {
-        document.getElementById("start-game").disabled = false;
-    }
-}
-
-function updatePlayerList() {
-    let playerList = document.getElementById("players");
-    playerList.innerHTML = "";
-    players.forEach(player => {
-        let li = document.createElement("li");
-        li.innerText = player;
-        playerList.appendChild(li);
-    });
-}
-
-function startRoulette() {
-    if (players.length < 2) {
-        alert("You need 2 players to start!");
-        return;
-    }
-
-    let unluckyIndex = Math.floor(Math.random() * 2);
-    let unluckyPlayer = players[unluckyIndex];
-
-    document.getElementById("game-status").innerHTML = 
-        `<p data-translate="game-result">${unluckyPlayer} lost the game!</p>`;
-
-    players = [];
-    updatePlayerList();
-    document.getElementById("start-game").disabled = true;
+    document.getElementById("game-result").innerText = `${loser} lost the game! ${winner} wins!`;
+    players = []; // Reset for next round
 }
 </script>
 
