@@ -3,33 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Shuffle - Brokey-Poly</title>
+    <title id="card-title">Card Shuffle</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateInit"></script>
+    <script src="translation.js"></script>
 </head>
 <body>
 
 <header>
-    <h1>Brokey-Poly</h1>
+    <h1 id="game-title">Brokey-Poly</h1>
     <nav>
         <ul>
-            <li><a href="hompage.html">Home</a></li>
-            <li><a href="dice-roller.html">Dice Roller</a></li>
-            <li><a href="card-shuffle.html" class="active">Card Shuffle</a></li>
-            <li><a href="russian-roulette.html">Russian Roulette</a></li>
+            <li><a href="Hompage.html" id="nav-home">Home</a></li>
+            <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
+            <li><a href="card-shuffle.html" id="nav-card" class="active">Card Shuffle</a></li>
+            <li><a href="russian-roulette.html" id="nav-russian">Russian Roulette</a></li>
         </ul>
     </nav>
 </header>
 
-<!-- Google Translate -->
-<div id="google_translate_element" class="language-selector"></div>
+<!-- Language Selector -->
+<div class="language-selector">
+    <label for="language" id="lang-label">Language:</label>
+    <select id="language" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="th">ไทย</option>
+    </select>
+</div>
 
 <div class="container">
-    <h2 data-translate="shuffle-title">Shuffle the Cards!</h2>
-    <button onclick="shuffleCard()" data-translate="shuffle-button">Shuffle</button>
-    <div class="card-container">
-        <p id="card-result" data-translate="shuffle-result">Press the button to get your result.</p>
-    </div>
+    <h2 id="card-title">Card Shuffle</h2>
+    <button onclick="drawCard()" id="draw-card">Draw a Card</button>
+    <p id="card-result">Press "Draw a Card" to receive an event.</p>
 </div>
 
 <footer>
@@ -37,22 +41,17 @@
 </footer>
 
 <script>
-function googleTranslateInit() {
-    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-}
-
-const cards = [
-    "You dig a trash can and found $20!",
-    "You found a golden coin worth $100!",
-    "Oops! You stepped in gum and lost $10.",
-    "You met a rich guy, and he gave you $50.",
-    "Bad luck! A thief stole $30 from you.",
-    "You won a small lottery prize of $200!"
+const cardEvents = [
+    "You found $20 in a trash can!",
+    "You lost $10 while gambling!",
+    "You stepped on gum, lose a turn!",
+    "You found a rare item worth $50!",
+    "You got a free ride to the next checkpoint!"
 ];
 
-function shuffleCard() {
-    let randomCard = cards[Math.floor(Math.random() * cards.length)];
-    document.getElementById("card-result").innerText = randomCard;
+function drawCard() {
+    let event = cardEvents[Math.floor(Math.random() * cardEvents.length)];
+    document.getElementById("card-result").innerText = event;
 }
 </script>
 
