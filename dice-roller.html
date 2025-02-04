@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brokey-Poly</title>
+    <title>Dice Roller - Brokey-Poly</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateInit"></script>
 </head>
 <body>
 
@@ -20,13 +21,16 @@
     </nav>
 </header>
 
+<!-- Google Translate -->
+<div id="google_translate_element" class="language-selector"></div>
+
 <div class="container">
-    <h2>Roll the Dice!</h2>
+    <h2 data-translate="roll-title">Roll the Dice!</h2>
     
-    <label for="dice-count">Number of Dice:</label>
+    <label for="dice-count" data-translate="dice-count-label">Number of Dice:</label>
     <select id="dice-count">
-        <option value="1">One Die</option>
-        <option value="2">Two Dice</option>
+        <option value="1" data-translate="one-die">One Die</option>
+        <option value="2" data-translate="two-dice">Two Dice</option>
     </select>
 
     <div class="dice-container">
@@ -34,7 +38,9 @@
         <div id="dice2" class="dice" style="display: none;">🎲</div>
     </div>
 
-    <button onclick="rollDice()">Roll Dice</button>
+    <button onclick="rollDice()" data-translate="roll-button">Roll Dice</button>
+    
+    <p id="result-text" data-translate="result-text">Press "Roll Dice" to see the result.</p>
 </div>
 
 <footer>
@@ -42,6 +48,10 @@
 </footer>
 
 <script>
+function googleTranslateInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+
 function rollDice() {
     let diceCount = document.getElementById("dice-count").value;
     let dice1 = Math.floor(Math.random() * 6) + 1;
@@ -52,8 +62,10 @@ function rollDice() {
     if (diceCount == "2") {
         document.getElementById("dice2").innerText = getDiceEmoji(dice2);
         document.getElementById("dice2").style.display = "inline-block";
+        document.getElementById("result-text").innerText = `You rolled a ${dice1} and a ${dice2}!`;
     } else {
         document.getElementById("dice2").style.display = "none";
+        document.getElementById("result-text").innerText = `You rolled a ${dice1}!`;
     }
 }
 
