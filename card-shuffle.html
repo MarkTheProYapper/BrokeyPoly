@@ -1,59 +1,41 @@
+<!-- Card Shuffle (card-shuffle.html) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="card-title">Card Shuffle</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="translation.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="translation.js" defer></script>
 </head>
 <body>
-
-<header>
-    <h1 id="game-title">Brokey-Poly</h1>
-    <nav>
-        <ul>
-            <li><a href="Hompage.html" id="nav-home">Home</a></li>
-            <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
-            <li><a href="card-shuffle.html" id="nav-card" class="active">Card Shuffle</a></li>
-            <li><a href="russian-roulette.html" id="nav-russian">Russian Roulette</a></li>
-        </ul>
-    </nav>
-</header>
-
-<!-- Language Selector -->
-<div class="language-selector">
-    <label for="language" id="lang-label">Language:</label>
-    <select id="language" onchange="changeLanguage()">
-        <option value="en">English</option>
-        <option value="th">ไทย</option>
-    </select>
-</div>
-
-<div class="container">
-    <h2 id="card-title">Card Shuffle</h2>
-    <button onclick="drawCard()" id="draw-card">Draw a Card</button>
-    <p id="card-result">Press "Draw a Card" to receive an event.</p>
-</div>
-
-<footer>
-    <p>&copy; 2025 Brokey-Poly. All rights reserved.</p>
-</footer>
-
-<script>
-const cardEvents = [
-    "You found $20 in a trash can!",
-    "You lost $10 while gambling!",
-    "You stepped on gum, lose a turn!",
-    "You found a rare item worth $50!",
-    "You got a free ride to the next checkpoint!"
-];
-
-function drawCard() {
-    let event = cardEvents[Math.floor(Math.random() * cardEvents.length)];
-    document.getElementById("card-result").innerText = event;
-}
-</script>
-
+    <header>
+        <h1 id="game-title">Brokey-Poly</h1>
+        <nav>
+            <ul>
+                <li><a href="hompage.html" id="nav-home">Home</a></li>
+                <li><a href="dice-roller.html" id="nav-dice">Dice Roller</a></li>
+                <li><a href="card-shuffle.html" class="active" id="nav-card">Card Shuffle</a></li>
+                <li><a href="russian-roulette.html" id="nav-russian">Russian Roulette</a></li>
+            </ul>
+        </nav>
+        <label id="lang-label">Language:</label>
+        <select id="language" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="th">ไทย</option>
+        </select>
+    </header>
+    <main>
+        <button onclick="drawCard()" id="draw-card">Draw a Card</button>
+        <p id="card-result">Press "Draw a Card" to receive an event.</p>
+    </main>
+    <script>
+        function drawCard() {
+            let selectedLang = localStorage.getItem("selectedLanguage") || "en";
+            let eventList = translations[selectedLang]["random-events"];
+            let event = eventList[Math.floor(Math.random() * eventList.length)];
+            document.getElementById("card-result").innerText = event;
+        }
+    </script>
 </body>
 </html>
